@@ -1,4 +1,5 @@
 import "./App.css";
+import { Routes, Route } from "react-router-dom";
 import { ChakraProvider, Grid, GridItem } from "@chakra-ui/react";
 import AppHeader from "./components/AppHeader";
 import CardMenu from "./components/CardMenu";
@@ -54,10 +55,15 @@ function App() {
               <AppHeader onLogout={handleLogoutClick} />
             </GridItem>
             <GridItem area="main">
-              <CardMenu />
+              <Routes>
+                <Route path="/" element={<CardMenu />}></Route>
+                <Route
+                  path="manage-users"
+                  element={<ManageUsers sampleData={sampleData} />}
+                ></Route>
+              </Routes>
             </GridItem>
           </Grid>
-          <ManageUsers sampleData={sampleData} />
         </>
       ) : (
         <Login onLoginSuccess={() => handleLoginSuccess()} />

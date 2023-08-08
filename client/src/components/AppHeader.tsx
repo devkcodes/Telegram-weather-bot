@@ -1,23 +1,15 @@
 import {
-  Container,
-  Box,
   HStack,
   Heading,
-  Image,
   Button,
   useToast,
-  Card,
   Avatar,
-  Wrap,
   Grid,
   GridItem,
 } from "@chakra-ui/react";
+
 import { signOut } from "firebase/auth";
 import { auth } from "../firebase";
-
-interface LoginProps {
-  onLogout: () => void;
-}
 
 interface AppHeaderProps {
   onLogout: () => void;
@@ -59,10 +51,10 @@ const AppHeader: React.FC<AppHeaderProps> = ({ onLogout }) => {
       <Grid
         width="100%"
         templateAreas={{
-          base: `"hi hi hi hi signout"`,
+          base: `"text text text text signout"`,
         }}
       >
-        <GridItem area="hi">
+        <GridItem area="text">
           <Heading>Welcome {localStorage.getItem("name")}</Heading>
         </GridItem>
         <GridItem area="signout">

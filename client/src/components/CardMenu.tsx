@@ -13,6 +13,8 @@ import {
   StatNumber,
 } from "@chakra-ui/react";
 
+import { Link } from "react-router-dom";
+
 const CardMenu = () => {
   return (
     <>
@@ -33,13 +35,15 @@ const CardMenu = () => {
           height="250px"
           backgroundColor="#9288F8"
         >
-          <Card padding={5} height="100%">
-            <CardHeader>
-              <Heading>Manage Users </Heading>
-            </CardHeader>
-            <Divider />
-            <CardBody>Manage subscribers of your app</CardBody>
-          </Card>
+          <Link to="manage-users">
+            <Card padding={5} height="100%">
+              <CardHeader>
+                <Heading>Manage Users </Heading>
+              </CardHeader>
+              <Divider />
+              <CardBody>Manage subscribers of your app</CardBody>
+            </Card>
+          </Link>
         </GridItem>
 
         <GridItem
@@ -52,13 +56,15 @@ const CardMenu = () => {
           height="250px"
           backgroundColor="#9288F8"
         >
-          <Card padding={5} height="100%">
-            <CardHeader>
-              <Heading> Bot settings </Heading>
-            </CardHeader>
-            <Divider />
-            <CardBody>Configure Bot settings of your app</CardBody>
-          </Card>
+          <Link to="bot-settings">
+            <Card padding={5} height="100%">
+              <CardHeader>
+                <Heading> Bot settings </Heading>
+              </CardHeader>
+              <Divider />
+              <CardBody>Configure Bot settings of your app</CardBody>
+            </Card>
+          </Link>
         </GridItem>
 
         <GridItem
