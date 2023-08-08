@@ -56,7 +56,7 @@ const CardMenu = () => {
           height="250px"
           backgroundColor="#9288F8"
         >
-          <Link to="bot-settings">
+          <Link to="/bot-settings">
             <Card padding={5} height="100%">
               <CardHeader>
                 <Heading> Bot settings </Heading>

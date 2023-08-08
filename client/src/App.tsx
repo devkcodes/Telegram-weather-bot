@@ -6,6 +6,7 @@ import CardMenu from "./components/CardMenu";
 import ManageUsers from "./components/ManageUsers";
 import { useEffect, useState } from "react";
 import Login from "./components/Login";
+import BotSettings from "./components/BotSettings";
 
 const sampleData = [
   {
@@ -58,9 +59,10 @@ function App() {
               <Routes>
                 <Route path="/" element={<CardMenu />}></Route>
                 <Route
-                  path="manage-users"
+                  path="/manage-users"
                   element={<ManageUsers sampleData={sampleData} />}
                 ></Route>
+                <Route path="/bot-settings" element={<BotSettings />}></Route>
               </Routes>
             </GridItem>
           </Grid>
