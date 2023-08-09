@@ -1,3 +1,6 @@
+import { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
+import axios from "axios";
 import {
   Card,
   CardBody,
@@ -7,15 +10,31 @@ import {
   GridItem,
   Heading,
   Stat,
-  StatArrow,
-  StatHelpText,
   StatLabel,
   StatNumber,
 } from "@chakra-ui/react";
 
-import { Link } from "react-router-dom";
-
 const CardMenu = () => {
+  //states
+  const [userCount, setUserCount] = useState<number>(0);
+
+  useEffect(() => {
+    fetchUsers();
+  }, []);
+
+  //fetching users
+  const fetchUsers = async () => {
+    try {
+      console.log("Fetching users...");
+      const response = await axios.get("http://localhost:3000/telegram/users");
+      const res = response.data;
+      setUserCount(res.length);
+      console.log(res.length);
+    } catch (error) {
+      console.error("Error fetching users:", error);
+    }
+  };
+
   return (
     <>
       <Grid
@@ -47,11 +66,11 @@ const CardMenu = () => {
         </GridItem>
 
         <GridItem
+          area="c2"
           borderRadius={10}
           boxShadow="lg"
           margin={5}
           padding={5}
-          area="c2"
           width="400px"
           height="250px"
           backgroundColor="#9288F8"
@@ -68,6 +87,7 @@ const CardMenu = () => {
         </GridItem>
 
         <GridItem
+          className=""
           borderRadius={10}
           overflow="hidden"
           boxShadow="lg"
@@ -88,11 +108,7 @@ const CardMenu = () => {
             <CardBody>
               <Stat>
                 <StatLabel>Total users</StatLabel>
-                <StatNumber>345,670</StatNumber>
-                <StatHelpText>
-                  <StatArrow type="increase" />
-                  23.36% This week
-                </StatHelpText>
+                <StatNumber>{userCount}</StatNumber>
               </Stat>
             </CardBody>
           </Card>

@@ -154,7 +154,6 @@ export class TelegramService {
     } else return true;
   }
 
-  //
   //daily update
   @Cron('3 * * * * *')
   async sendDailyWeatherUpdates() {

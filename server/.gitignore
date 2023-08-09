@@ -1,7 +1,8 @@
 # compiled output
 /dist
 /node_modules
-
+/.env
+/telegram-app-2f7f4-firebase-adminsdk-snrh5-3f22dcb908.json
 # Logs
 logs
 *.log

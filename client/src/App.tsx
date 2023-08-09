@@ -7,16 +7,7 @@ import ManageUsers from "./components/ManageUsers";
 import { useEffect, useState } from "react";
 import Login from "./components/Login";
 import BotSettings from "./components/BotSettings";
-
-const sampleData = [
-  {
-    id: 1,
-    firstname: "John",
-    lastname: "Doe",
-    city: "New York",
-  },
-];
-
+import theme from "./theme";
 function App() {
   const [authenticated, setAuthenticated] = useState(false);
   console.log(authenticated);
@@ -44,7 +35,7 @@ function App() {
   }, []);
 
   return (
-    <ChakraProvider>
+    <ChakraProvider theme={theme}>
       {authenticated ? (
         <>
           <Grid
@@ -58,10 +49,7 @@ function App() {
             <GridItem area="main">
               <Routes>
                 <Route path="/" element={<CardMenu />}></Route>
-                <Route
-                  path="/manage-users"
-                  element={<ManageUsers sampleData={sampleData} />}
-                ></Route>
+                <Route path="/manage-users" element={<ManageUsers />}></Route>
                 <Route path="/bot-settings" element={<BotSettings />}></Route>
               </Routes>
             </GridItem>

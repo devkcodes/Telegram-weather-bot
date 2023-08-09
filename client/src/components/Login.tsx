@@ -1,7 +1,7 @@
 import { signInWithPopup, GoogleAuthProvider } from "firebase/auth";
 import { provider, auth } from "../firebase";
 import GoogleButton from "react-google-button";
-import { useState } from "react";
+
 import {
   Box,
   useToast,
@@ -16,18 +16,16 @@ interface LoginProps {
 }
 
 const Login: React.FC<LoginProps> = ({ onLoginSuccess }) => {
-  const [loading, isLoading] = useState("false");
   const toast = useToast();
 
   const handleLogin = () => {
     signInWithPopup(auth, provider)
       .then((result) => {
-        // This gives you a Google Access Token. You can use it to access the Google API.
+        // This gives a Google Access Token. used to access the Google API.
         const credential = GoogleAuthProvider.credentialFromResult(result);
 
         if (credential) {
           console.log("login successful");
-          const token = credential.accessToken;
 
           onLoginSuccess();
           const user = result.user;
@@ -48,11 +46,8 @@ const Login: React.FC<LoginProps> = ({ onLoginSuccess }) => {
           if (email) localStorage.setItem("email", email);
           if (profilePic) localStorage.setItem("profilePic", profilePic);
         }
-        // IdP data available using getAdditionalUserInfo(result)
-        // ...
       })
       .catch((error) => {
-        // Handle Errors here.
         const errorCode = error.code;
         const errorMessage = error.message;
         console.log(errorMessage, errorCode, errorMessage);
@@ -93,12 +88,6 @@ const Login: React.FC<LoginProps> = ({ onLoginSuccess }) => {
             <Box p={5} m={5}>
               <GoogleButton onClick={handleLogin}></GoogleButton>
             </Box>
-            {/* <Box>
-              Can't login? Contact{" "}
-              <Link href="https://github.com/devkcodes" color="teal" isExternal>
-                Admin
-              </Link>
-            </Box> */}
           </Flex>
         </Box>
       </Container>

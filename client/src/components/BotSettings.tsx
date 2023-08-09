@@ -3,9 +3,6 @@ import {
   Button,
   Container,
   useToast,
-  Divider,
-  FormHelperText,
-  FormLabel,
   HStack,
   Heading,
   VStack,
@@ -13,10 +10,12 @@ import {
   StackDivider,
 } from "@chakra-ui/react";
 import axios from "axios";
+// import  from "dotenv";
 import { useState } from "react";
 
 const BotSettings = () => {
-  const botToken = "6296406218:AAHMLARBP3H1Feb2fRMBqNfclqvgTUpeq84";
+  console.log(process.env);
+  const botToken = process.env.REACT_APP_BOT_TOKEN;
   const baseURL = `https://api.telegram.org/bot${botToken}`;
   const [botName, setBotName] = useState("");
   const [desc, setDesc] = useState("");
