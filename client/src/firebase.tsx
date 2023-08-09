@@ -1,5 +1,7 @@
 // src/firebaseConfig.js
 import { initializeApp } from "firebase/app";
+import { getStorage } from "firebase/storage";
+
 import { getAuth, GoogleAuthProvider, signInWithPopup } from "firebase/auth";
 
 const firebaseConfig = {
@@ -15,5 +17,6 @@ const firebaseConfig = {
 const firebaseApp = initializeApp(firebaseConfig);
 const auth = getAuth(firebaseApp);
 const provider = new GoogleAuthProvider();
+const storage = getStorage(firebaseApp);
 
-export { auth, provider, signInWithPopup, firebaseApp }; // Expo
+export { storage, auth, provider, signInWithPopup, firebaseApp }; // Expo
